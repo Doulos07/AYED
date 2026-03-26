@@ -16,27 +16,26 @@ public class Contador {
 	}
 	
 	public static void main(String[] args) {
+		Scanner scan = new Scanner (System.in);
+		
+		System.out.print("ingrese para obtener una lista de numeros multiples de la misma longitud");
+		System.out.print("se corta con -1 ");
+		
+		int num = scan.nextInt();
+		
+		while ( num != -1 ) {
+			int [] lista = new int [num];
 			
-			Contador contador = new Contador();
-			Scanner scan = new Scanner (System.in);
+			lista = Contador.NumerosMultiplos(num);
 			
-			System.out.print("ingrese para obtener una lista de numeros multiples de la misma longitud");
-			System.out.print("se corta con -1 ");
-			
-			int num = scan.nextInt();
-			
-			while ( num != -1 ) {
-				int [] lista = new int [num];
-				
-				lista = contador.NumerosMultiplos(num);
-				
-				for (int i : lista) {
-					System.out.print("\n" + i);
-				}
-				
-				System.out.print("\n Ingrese otro numero");
-				num = scan.nextInt();
+			for (int i : lista) {
+				System.out.print("\n" + i);
 			}
+			
+			System.out.print("\n Ingrese otro numero");
+			num = scan.nextInt();
 		}
+		scan.close();
+	}
 	
 }
