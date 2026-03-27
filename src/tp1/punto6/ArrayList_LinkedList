@@ -1,0 +1,44 @@
+ArrayList
+
+A diferencia de una Matriz una ArrayList se puede modificar su dimension
+
+Contiene un Array regular, Si el array no es lo suficientemente grande, se crea uno nuevo de mayor tamaño 
+para reemplazar al anterior y se elimina el anterior.
+
+
+	
+------------------------------
+LinkedList
+
+Almacena sus elementos en "contenedores" 
+
+Cada contenedor tiene un enlace al primer elemento y  el enlace al siguente contenedor de la lista
+Para agregar un elemento a la lista se agrega a un contenedor y se enlaza con alguno de los contenedores de la lista
+
+
+A- ¿En qué casos ArrayList ofrece un mejor rendimiento que LinkedList?
+
+1- Cuando se utiliza para almacenar y acceder a datos,
+2- Cuando no hay mucha manipulacion de datos
+3- Acceso aleatorio O(1)
+
+B- ¿Cuándo LinkedList puede ser más eficiente que ArrayList?
+1- Cuando se tiene que realizar manipulacion de datos
+	-Insersion si se tiene la posicion
+	- Pero tiene busqueda Lenta O(n)
+	 
+C- ¿Qué diferencia encuentra en el uso de la memoria en ArrayList y LinkedList?
+
+En ArrayList tiene un mejor rendimiento en memoria ya que cada cada elemento contiene un solo tipo de dato
+en LinkedList cada Elemento tiene que almacenar un tipo de datos, referencia al anterior elemento y al siguiente por
+lo que lo hace menos eficiente 
+
+
+D- ¿En qué casos sería preferible usar un ArrayList o un LinkedList?
+ArrayList -> Almacenar y acceder a datos
+	- necesitás acceso rápido por índice
+	- hay muchas lecturas y pocas modificaciones
+
+LinkedListpara ->  Manipular datos
+	- hay muchas inserciones/eliminaciones
+	- especialmente al inicio o en posiciones conocidas
