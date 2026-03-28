@@ -59,10 +59,10 @@ public class Estudiante {
 	}
 
 	public String tusDatos() {
-		return "Estudiante" + getNombre() + getApellido() 
-				+ "\n Comision" + getComision() 
-				+ "\n Email"+ getEmail() 
-				+ "\n Diraccion" + getDireccion();
+		return 	  "\n Estudiante: " + getNombre() + " " + getApellido() 
+				+ "\n Comision: " + getComision() 
+				+ "\n Email: "+ getEmail() 
+				+ "\n Diraccion: " + getDireccion();
 	}
 	
 	
