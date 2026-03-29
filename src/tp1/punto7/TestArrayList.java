@@ -2,12 +2,30 @@ package tp1.punto7;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 import tp1.punto3.Estudiante;
 
 public class TestArrayList {
 
 	public TestArrayList() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public boolean esCapicua(List<Integer> lista) {
+		boolean esCapicua = true;
+		List<Integer> listaInversa = new ArrayList<>(lista);
+		Collections.reverse(listaInversa);
+		
+		/* Compara por referencia en memoria en este caso esta bien ya que son los mismo objetos 
+		 * Si fuera otro objeto tendria que usar equal ya que no compara por referencia en memoria sino 
+		 * por el valor del contenido
+		 */
+		for (int i = 0; i < lista.size(); i++) {
+			if ( lista.get(i) != listaInversa.get(i)) esCapicua = false;
+		}
+
+		return esCapicua;
 	}
 	
 	public static void imprimirEstudiantes (List<Estudiante>arg) {
@@ -87,6 +105,18 @@ public class TestArrayList {
 			}
 			
 			System.out.println(numeros);
+			
+			TestArrayList.multiplesProcesos();
+			
+			TestArrayList test = new TestArrayList();
+			System.out.println(test.esCapicua(numeros) ? "La lista es Capicua" : "La lista no es Capicua");
+			
+			int num = 6;
+			EjerciconSucesion sucesion = new EjerciconSucesion();
+			numeros = sucesion.calcularSucesion(num);
+			for (Integer integer : numeros) {
+				System.out.print(integer + " ");
+			}
 		}
 		else {
 			System.out.println("no se paso parametro a la clase main");
@@ -128,7 +158,6 @@ public class TestArrayList {
 		 * 
 		 * */
 		
-		TestArrayList.multiplesProcesos();
 	}
 
 }
