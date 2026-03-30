@@ -1,8 +1,11 @@
 package tp1.punto7;
 
+import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.Comparator;
+
 import tp1.punto3.Estudiante;
 
 public class TestArrayList {
@@ -33,6 +36,39 @@ public class TestArrayList {
 			System.out.println(estudiante.tusDatos());
 		}
 		System.out.println("-----------------------------------------");
+	}
+	
+	// Preguntar como hacer en un solo metodo
+	public void invertirArrayList(ArrayList<Integer> lista) {
+		this.invertirRec(lista, 0, lista.size() - 1);
+	}
+	
+	public void invertirRec (ArrayList<Integer> lista, int inicio, int fin) {
+		if (inicio >= fin) {
+			return;
+		}
+		
+		Integer temp = lista.get(inicio);
+		lista.set(inicio, lista.get(fin));
+		lista.set(fin, temp);
+		
+		this.invertirRec(lista, inicio + 1, fin - 1);
+	}
+	
+
+	public int sumarLinkedList(LinkedList<Integer> lista) {
+		if (lista.isEmpty()) {
+			return 0;
+		}
+		int primero = lista.removeFirst();
+		return primero + this.sumarLinkedList(lista);
+	}
+	
+	public ArrayList<Integer> combinarOrdenado(ArrayList<Integer> lista1, ArrayList<Integer> lista2){
+		lista1.addAll(lista2);
+		//lista1.sort((a, b) -> a - b);
+		lista1.sort(Comparator.naturalOrder());
+		return lista1;
 	}
 	
 	public static void multiplesProcesos () {
@@ -117,6 +153,51 @@ public class TestArrayList {
 			for (Integer integer : numeros) {
 				System.out.print(integer + " ");
 			}
+		
+			
+			System.out.println("\n -----------------------------------------");
+			ArrayList<Integer>list = new ArrayList<Integer>();
+			list.add(10);
+			list.add(20);
+			list.add(30);
+			list.add(40);
+			list.add(50);
+			
+			for (Integer integer2 : list) {
+				System.out.print(integer2 + " ");
+			}
+			
+			test.invertirArrayList(list);
+			
+			System.out.println("\n -----------------------------------------");
+			for (Integer integer2 : list) {
+				System.out.print(integer2 + " ");
+			}
+			
+			System.out.println("\n -----------------------------------------");
+			LinkedList<Integer> linked = new LinkedList<>();
+			linked.add(10);
+			linked.add(20);
+			linked.add(30);
+			linked.add(40);
+			linked.add(50);
+			
+			for (Integer integer2 : linked) {
+				System.out.print(integer2 + " ");
+			}
+			
+			System.out.println();
+			System.out.println("suma de los elementos LinkedLink: "+ test.sumarLinkedList(linked));
+			
+			ArrayList<Integer>list2 = new ArrayList<Integer>();
+			list2.add(5);
+			list2.add(15);
+			list2.add(25);
+			list2.add(35);
+			list2.add(45);
+			
+			list = test.combinarOrdenado(list, list2);
+			System.out.println(list);
 		}
 		else {
 			System.out.println("no se paso parametro a la clase main");
