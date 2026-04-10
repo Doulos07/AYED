@@ -1,7 +1,5 @@
 package tp2.punto1;
 
-
-
 public class BinaryTree <T> {
 	
 	private T data;
@@ -76,70 +74,22 @@ public class BinaryTree <T> {
 		return this.getData().toString();
 	}
 
-	// EJERCICIO 2
-	
-	public int contarHojas(BinaryTree<T> ab) {
-	   if (ab.isEmpty()) {
-		   return 0;
-	   }
-	   if (ab.isLeaf()) {
-		   return 1;
-	   }
-	   int aux = 0;
-	   if (ab.hasLeftChild()) {
-		   aux += contarHojas(ab.getLeftChild());
-	   }
-	   if (ab.hasRightChild()) {
-		   aux += contarHojas(ab.getRightChild());
-	   }
-	   return aux;
+	public  int contarHojas() {
 	   
+		return 0;
 	}
 		
 		
     	 
-	public BinaryTree<T> espejo(BinaryTree<T> ab){
-		
-		BinaryTree<T> abEspejo = new BinaryTree<T>();
-
-	   if (!ab.isEmpty()) {
-		   abEspejo.setData(ab.getData());
-	   }
-	   
-	   if (ab.hasLeftChild()) {
-		   abEspejo.addRightChild(this.espejo(ab.getLeftChild()));
-	   }
-	   if (ab.hasRightChild()) {
-		   abEspejo.addLeftChild(this.espejo(ab.getRightChild()));
-	   }
-	   
-	   return abEspejo;
-	}
+    public BinaryTree<T> espejo(){
+		       		  
+ 	   return null;
+    }
 
 	// 0<=n<=m
-	public void entreNiveles(int n, int m, int aux){
-		if (n <= m){
-			if (!this.isEmpty() && (aux >= n && aux <= m)) { 
-				System.out.println(this.getData());
-			}
-			if(this.hasLeftChild()) {
-				this.getLeftChild().entreNiveles(n, m, aux + 1 );
-			}
-			if (this.hasRightChild()){
-				this.getRightChild().entreNiveles(n, m, aux + 1);
-			}
-		}
+	public void entreNiveles(int n, int m){
+		
    }
-	
-	public void imprimirPreorden(BinaryTree<T> ab) {
-	    System.out.println(ab.getData());
-	    if (ab.hasLeftChild()) {
-	        this.imprimirPreorden(ab.getLeftChild());
-	    }
-	    if (ab.hasRightChild()) {
-	        this.imprimirPreorden(ab.getRightChild());
-	    }
-	}
 		
 }
 

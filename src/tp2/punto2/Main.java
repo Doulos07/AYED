@@ -1,5 +1,4 @@
 package tp2.punto2;
-import tp2.punto1.BinaryTree;
 
 public class Main {
 
@@ -11,14 +10,14 @@ public class Main {
 		BinaryTree <Integer> rigthChild = new BinaryTree<>(78);
 		ab.addLeftChild(leftChild);
 		ab.addRightChild(rigthChild);
-		System.out.println(ab.contarHojas(ab));
+		System.out.println(ab.contarHojas());
 		
-		ab.imprimirPreorden(ab);
-		ab = ab.espejo(ab);
+		ab.imprimirPreorden();
+		ab = ab.espejo();
 		System.out.println();
-		ab.imprimirPreorden(ab);
+		ab.imprimirPreorden();
 		
 		System.out.println();
-		ab.entreNiveles(3, 3, 1);
+		ab.entreNiveles(1, 3);
 	}
 }

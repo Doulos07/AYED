@@ -2,7 +2,7 @@ package tp2.punto3;
 import tp2.punto1.*;
 import java.util.List;
 import java.util.LinkedList;
-
+import java.util.*;
 public class ContadorArbol {
 	
 	BinaryTree<Integer> ab = new BinaryTree<>();
@@ -11,33 +11,41 @@ public class ContadorArbol {
 		this.ab = ab;
 	}
 
-	public List<Integer> numerosParesInOrden(BinaryTree<Integer> ab){
-		List<Integer> ls = new LinkedList<Integer>();
-		if (ab.hasLeftChild()) {
-			ls.addAll(this.numerosParesInOrden(ab.getLeftChild()));
-		}
-		if (!ab.isEmpty()) {
-			ls.add(ab.getData());
-		}
-		if (ab.hasRightChild()) {
-			ls.addAll(this.numerosParesInOrden(ab.getRightChild()));
-		}
-		return ls;
+	public ArrayList<Integer> numerosParesA(){
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		this.inOrden(ab, result);
+		return result;
 	}
 	
-	public List<Integer> numerosParesPosOrden(BinaryTree<Integer> ab){
-		List<Integer> ls = new LinkedList<Integer>();
+	public ArrayList<Integer> numerosParesB(){
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		this.postOrden(ab, result);
+		return result;
+	}	
+	
+	public void inOrden(BinaryTree<Integer> ab, ArrayList<Integer> lista){
 		if (ab.hasLeftChild()) {
-			ls.addAll(this.numerosParesInOrden(ab.getLeftChild()));
-		}
-		if (ab.hasRightChild()) {
-			ls.addAll(this.numerosParesInOrden(ab.getRightChild()));
+			this.inOrden(ab.getLeftChild(), lista);
 		}
 		if (!ab.isEmpty()) {
-			ls.add(ab.getData());
+			if (ab.getData() % 2 == 0) lista.add(ab.getData());
 		}
-		return ls;
-		
+		if (ab.hasRightChild()) {
+			this.inOrden(ab.getRightChild(), lista);
+		}
+	}
+	
+	public void postOrden(BinaryTree<Integer> ab, ArrayList<Integer> lista){
+		if (ab.hasLeftChild()) {
+			this.postOrden(ab.getLeftChild(), lista);
+		}
+		if (ab.hasRightChild()) {
+			this.postOrden(ab.getRightChild(), lista);
+		}
+		if (!ab.isEmpty()) {
+			
+			if (ab.getData() % 2 == 0) lista.add(ab.getData());
+		}
 	}
 	
 	public static void main(String [] args) {
@@ -53,7 +61,7 @@ public class ContadorArbol {
 		
 		List<Integer> listInOrden = null;
 		
-		listInOrden = contAb.numerosParesInOrden(ab);
+		listInOrden = contAb.numerosParesA();
 		
 		for (Integer integer : listInOrden) {
 			System.out.println(integer);
@@ -61,7 +69,7 @@ public class ContadorArbol {
 		
 		System.out.println();
 		
-		listInOrden = contAb.numerosParesPosOrden(ab);
+		listInOrden = contAb.numerosParesB();
 		
 		for (Integer integer : listInOrden) {
 			System.out.println(integer);
