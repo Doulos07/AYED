@@ -152,7 +152,8 @@ public class BinaryTree <T> {
    }
 	
 	public void imprimirPreorden() {
-	    System.out.println(this.getData());
+		
+	    System.out.println(!this.isEmpty() ? this.getData() : 0);
 	    if (this.hasLeftChild()) {
 	        this.getLeftChild().imprimirPreorden();
 	    }
