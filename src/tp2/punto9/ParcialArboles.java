@@ -36,7 +36,7 @@ public class ParcialArboles {
 	    
 	    derIzqDer.addRightChild(derIzqDerDer);
 	    
-	    derIzq
+	    //derIzq
 	}
 
 }
