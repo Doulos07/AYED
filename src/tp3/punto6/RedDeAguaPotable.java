@@ -1,5 +1,5 @@
 package tp3.punto6;
-import tp3.punto1.*;
+import tp3.punto1.GeneralTree;
 
 public class RedDeAguaPotable {
 
@@ -21,18 +21,18 @@ public class RedDeAguaPotable {
 		}
 		
 		int bifurcaciones = red.getChildren().size();
-		System.out.println("litro:" + bifurcaciones);
-		if (bifurcaciones != 0) {
-			caudal = caudal / bifurcaciones;
-			System.out.println("Bifurcaciones:" + caudal);
-			for (GeneralTree<Character> child: red.getChildren()) {
-				double subCaudal = calcularMinimoCaudal(child, caudal);
-				if (subCaudal < caudal) {
-					caudal = subCaudal;
-				}
+		if (bifurcaciones == 0) return caudal;
+		
+		double caudalHijo = caudal / bifurcaciones;
+		double minimo = Integer.MAX_VALUE;
+		System.out.println("Bifurcaciones:" + caudal);
+		for (GeneralTree<Character> child: red.getChildren()) {
+			double subCaudal = calcularMinimoCaudal(child, caudalHijo);
+			if (subCaudal < minimo) {
+				minimo = subCaudal;
 			}
 		}
-		return caudal;
+		return minimo;
 	}
 
 	public static void main(String[] args) {
